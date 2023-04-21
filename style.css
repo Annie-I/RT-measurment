@@ -1,0 +1,43 @@
+body {
+    background-color: rgb(206, 220, 250);
+}
+
+h1 {
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+    margin-top: 25px;
+}
+
+#intro {
+    margin-bottom: 50px;
+}
+
+#card {
+    border: 1px solid rgb(255, 255, 255);
+    margin: 0 200px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+#task_selection {
+    display: flex;
+    justify-content: space-between;
+    margin: 50px 10px;
+}
+
+.task_card {
+    border: 1px solid rgba(206, 220, 250, 0.8);
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.9);
+    width: 27%;
+    padding: 0 15px 10px 15px;
+    display: grid;
+}
+
+.task_name {
+    font-weight: bold;
+}
