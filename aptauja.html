@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="lv">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style.css" />
+        <title>Reakcijas laiku testi</title>
+    </head>
+    <body>
+        <div id="card">
+            <h1>Reakcijas laiks un to ietekmējošie faktori</h1>
+            <h2>Pētījuma dalībnieka aptauja</h2>
+            <p>
+                Katra dalībnieka rezultāti un sniegtās atbildes uz jautājumiem ir pilnīgi anonīmas un nevienai personai nav iespēja sasaistīt tos ar konkrētu personu. Tāpēc lūdzu, atbildi pēc iespējas precīzāk, jo tas ir svarīgi pētījuma rezultātiem. Paldies!
+            </p>
+            <div id="question_list">
+                <form>
+                    <label for="age"> Vecums:</label>
+                    <input type="text" id="age" name="vecums" maxlength="2"
+                    onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))">
+                </form>
+
+                <form id="geneder_form">
+                    <p>Dzimums:</p>
+
+                    <label for="female"><input type="radio" id="female" name="geneder" value="sieviete"> Sieviete</label>
+
+                    <label for="male"><input type="radio" id="male" name="geneder" value="vīrietis"> Vīrietis</label>
+                </form>
+
+                <form>
+                    <label for="occupation"> Nodarbošanās:</label>
+                    <input type="text" id="occupation" name="nodarbošanās">
+                </form>
+
+                <form>
+                    <label for="hobbies">Hobiji</label><br>
+                    <textarea id="hobbies" name="hobiji"> </textarea>
+                </form>
+
+<!-- par videospēlēm -->
+
+                <form id="is_playing">
+                    <p>Cik bieži Tu spēlē videospēles? Izvēlies to variantu, kas atbilst visprecīzāk.</p>
+                    <input type="radio" name="videospeles" value="gandriz katru dienu" id="usually">
+                    <label for="usually">5 - 7 dienas nedēļā</label>
+                    <input type="radio" name="videospeles" value="2-4x nedēļā" id="often">
+                    <label for="often">2 - 4 dienas nedēļā</label>
+                    <input type="radio" name="videospeles" value="dažas reizes mēnesī" id="sometimes">
+                    <label for="sometimes">Dažas dienas mēnesī</label>
+                    <input type="radio" name="videospeles" value="gandrīz nemaz" id="rarely">
+                    <label for="rarely">Retāk</label>
+                    <input type="radio" name="videospeles" value="nespēlē" id="not_paying">
+                    <label for="not_paying">Nespēlēju</label>
+                </form>
+
+
+                <div id="when_started">
+                    <form>
+                        <!-- tad, ja atbild kādu no pirmajiem 2 variantiem -->
+                        <p>Aptuveni cik gadus Tu aktīvi spēlē datorspēles?</p>
+                        <input type="text" name="vecums" maxlength="2" id="how_long_do_you_play"
+                        onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))">
+                    </form>
+                </div>
+
+
+                <div id="what_games">
+                    <form>
+                        <label for="games"> Kāda veida spēles Tu visbiežāk spēlē? (MMORPG, FPS, stratēģijas, u.c. Ja nezini žanru, vari arī rakstīt konkrētus spēļu nosaukumus.)</label><br>
+                        <textarea id="games" name="speles"> </textarea>
+                        <br><br>
+                    </form>
+                </div>
+<!-- beidzas jaut. par spēlēm -->
+
+                <form id="is_drinking">
+                    <p>Cik bieži Tu lieto alkoholu? Izvēlies to variantu, kas atbilst visvairāk.</p>
+                    <input type="radio" name="alkohols" value="gandriz katru dienu" id="usually">
+                    <label for="usually">5 - 7 dienas nedēļā</label>
+                    <input type="radio" name="alkohols" value="2-4x nedēļā" id="often">
+                    <label for="often">2 - 4 dienas nedēļā</label>
+                    <input type="radio" name="alkohols" value="dažas reizes mēnesī" id="sometimes">
+                    <label for="sometimes">Dažas dienas mēnesī</label>
+                    <input type="radio" name="alkohols" value="gandrīz nemaz" id="rarely">
+                    <label for="rarely">Retāk</label>
+                    <input type="radio" name="alkohols" value="nedzer" id="not_drinking">
+                    <label for="not_drinking">Nelietoju</label>
+                </form>
+
+
+                <form id="is_smoking">
+                    <p>Cik bieži Tu smēķē? Izvēlies to variantu, kas atbilst visvairāk.</p>
+                    <input type="radio" name="smēķēšana" value="vairākas reizes dienā" id="every_day">
+                    <label for="every_day">Vairākas reizes dienā</label>
+                    <input type="radio" name="smēķēšana" value="katru dienu" id="usually">
+                    <label for="usually">1x dienā</label>
+                    <input type="radio" name="smēķēšana" value="vairākas reizes nedēļā" id="often">
+                    <label for="often">2 - 4x nedēļā</label>
+                    <input type="radio" name="smēķēšana" value="reizi nedēļā" id="sometimes">
+                    <label for="sometimes">1x nedēļā</label>
+                    <input type="radio" name="smēķēšana" value="gandrīz nemaz" id="rarely">
+                    <label for="rarely">Retāk</label>
+                    <input type="radio" name="smēķēšana" value="nesmēķē" id="not_smoking">
+                    <label for="not_smoking">Nesmēķēju</label>
+                </form>
+
+
+                <!-- ja !nesmēķē -->
+                <form>
+                    <p>Ko Tu smēķē? Atzīmē visus variantus, kas attiecas uz Tevi.</p>
+                    <input type="checkbox" name="ko_smēķē" id="cigaretes" value="cigaretes">
+                    <label for="cigaretes"> Cigaretes </label><br>
+                    <input type="checkbox" name="ko_smēķē" id="e-cigaretes" value="elektroniskās cigaretes">
+                    <label for="cigaretes"> Elektroniskās cigaretes </label><br>
+                    <input type="checkbox" name="ko_smēķē" id="heats" value="karsējamo tabaku">
+                    <label for="heats"> Karsējamo tabaku </label><br>
+                    <input type="checkbox" name="ko_smēķē" id="tabaco" value="tabaku">
+                    <label for="tabaco"> Tabaku (tinamās cigaretes, pīpes)</label><br>
+                    <input type="checkbox" name="ko_smēķē" id="else" value="cits">
+                    <label for="else"> Ko citu</label><br>
+                    <!-- ^ pievienot teksta lauku, lai var ierakstīt -->
+                </form>
+
+                <form>
+                    <br>
+                    <input type="checkbox" name="piekrišana" id="agreement" value="piekrītu">
+                    <label for="agreement"> Pētījumā piedalos brīvprātīgi un piekrītu manu <a href="./par-petijumu.html" target="_blank">datu apstrādei</a>. </label><br>
+                    <!-- ^ pievienot teksta lauku, lai var ierakstīt -->
+                </form>
+
+                <div id="thank_you_text">
+                    <h3>Paldies par dalību!</h3>
+                </div>
+
+
+
+
+            </div> <!--question section div ending-->
+
+
+            </div>
+        </div>
+    </body>
+</html>

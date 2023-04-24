@@ -47,11 +47,25 @@ h3 {
     text-align: center;
 }
 
-.task_card button {
+.button {
     background-color: rgb(206, 220, 250);
     border: none;
     border-radius: 10px;
-    padding: 5px;
-    width: 150px;
+    width: 140px;
+    height: 25px;
+    padding: 5px 20px;
     margin-left: auto;
+    text-align: center;
+    text-decoration: none;
+    color: rgb(0, 23, 73);
+}
+
+/* aptaujai */
+form {
+    margin-bottom: 10px;
+}
+
+#geneder_form {
+    display: flex;
+    align-items: center;
 }
