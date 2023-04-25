@@ -1,25 +1,26 @@
 let circle = document.getElementById('reaction_intro_circle');
-let start_task_instruction = document.getElementById('start_task_instruction');
-let in_progress = 0;
+let start_task_instruction = document.getElementById('instruction1');
+let state = 0; //0 - not started, 1 started but color not changed, 2 color is changed, waiting reaction
 let color_change = 0;
+let mistakes = 0;
 let finish = 0;
-const ms = 3200;
 
 document.addEventListener('keydown', function (event) {
     if (event.key === ' ') {
-        if (!in_progress) {
-            in_progress = 1;
-            start = new Date().getTime();
-            console.log('start', start);
-            setTimeout(change_color, ms);
+        if (!state) {
+            state = 1;
+            setTimeout(change_color, 5100);
             start_task_instruction.innerHTML = 'Uzdevums sācies!';
-        } else if (in_progress && !finish) {
+        } else if (state === 1) {
+            mistakes++;
+            console.log('Mistakes', mistakes);
+        } else if (state === 2 && !finish) {
             finish = new Date().getTime();
             console.log('finish', finish);
             setTimeout(function () {
-                window.location.href = '../index.html';
-            }, 2500);
-            start_task_instruction.innerHTML = 'Uzdevums pabeigts! Tūlīt parādīsies nākamā uzdevuma apraksts.';
+                window.location.href = './r15.html';
+            }, 3500);
+            start_task_instruction.innerHTML = 'Uzdevums pabeigts! Tūlīt parādīsies nākamais uzdevums.';
             // šeit var parātīt arī to, cik ātrs bija reakcijas laiks, ja tas tiks uzskatīts par vajadzīgu.
         }
     }
@@ -27,6 +28,7 @@ document.addEventListener('keydown', function (event) {
 
 function change_color() {
     circle.style.backgroundColor = 'rgb(14, 119, 96)';
+    state = 2;
     color_change = new Date().getTime();
-    console.log(start - color_change);
+    console.log('color changed', color_change);
 }
