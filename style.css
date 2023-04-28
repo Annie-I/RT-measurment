@@ -104,3 +104,13 @@ form {
     display: flex;
     align-items: center;
 }
+
+/* rotācijas uzdevumiem */
+.rotation_task_containers {
+    display: flex;
+    justify-content: center;
+}
+
+/* .rotation_task {
+
+} */

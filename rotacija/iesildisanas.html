@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="lv">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="../style.css" />
+        <title>Reakcijas laiku testi</title>
+    </head>
+    <body>
+        <div id="card">
+            <div class="description">
+                <h2>Reakcija</h2>
+                <h3>Iesildīšanās uzdevums</h3>
+                <p class="task_description">
+                    Zemāk Tu redzi figūru. Kad sāksi uzdevuma izpidli, parādīsies vēl 3 figurās un Tev pēc iespējas
+                    ātrāk ir jāatpazīst kura no tām ir sākumā redzamā figūra, bet pagriezta citādāk.
+                </p>
+                <p class="start_task_instruction" id="instruction1">
+                    Lai sāktu pildīt uzdevumu, nospied atstarpes taustiņu.
+                </p>
+            </div>
+            <div class="rotation_task_containers" id="rotation_intro_task">
+                <div class="rotation_task">
+                    <img src="./images/intro/task.jpg" width="250px" alt="iesildīšanās uzdevuma sākotnējais attēls" />
+                </div>
+                <div id="rotation_answers"></div>
+            </div>
+        </div>
+        <script src="./intro.js"></script>
+    </body>
+</html>
