@@ -16,6 +16,7 @@ set_color(sequence[sequence_index]);
 
 document.addEventListener('keydown', function (event) {
     if (event.key === ' ') {
+        console.log(state);
         switch (state) {
             case 'start':
                 start_task_instruction.innerHTML = 'Uzdevums sācies!';
@@ -24,19 +25,19 @@ document.addEventListener('keydown', function (event) {
             case 'in_progress':
                 mistakes++;
                 console.log(mistakes);
+                break;
             case 'relocated':
                 const reaction_time = new Date().getTime();
                 reaction.push(reaction_time);
-                if (sequence_index <= 5) {
-                    start_task();
+
+                if (sequence_index > sequence.length - 2) {
+                    end_task();
                 } else {
-                    state = 'completed';
-                    start_task_instruction.innerHTML = 'Uzdevums pabeigts! Tūlīt parādīsies nākamais uzdevums.';
-                    setTimeout(function () {
-                        //window.location.href = '../index.html';
-                    }, 3500);
+                    start_task();
                 }
-            case 'completed':
+                break;
+
+            default:
                 break;
         }
     }
@@ -48,6 +49,11 @@ function start_task() {
 }
 
 function move_circle() {
+    if (sequence_index > sequence.length - 2) {
+        state = 'relocated';
+        return;
+    }
+
     remove_color(sequence[sequence_index]);
     sequence_index++;
     set_color(sequence[sequence_index]);
@@ -65,32 +71,10 @@ function remove_color(number) {
     circles[number].removeAttribute('style');
 }
 
-// switch (state) {
-//     case 0:
-//         state++;
-//         console.log(state);
-//     case 1:
-//         console.log(state);
-//         in_progress = 1;
-//         setTimeout(function () {
-//             set_color(sequence[state]);
-//             remove_color(sequence[state - 1]);
-//             in_progress = 0;
-//             state++;
-//         }, timing[state - 1]);
-//         if (in_progress === 1) {
-//             mistakes++;
-//             console.log('mistakes', mistakes);
-//         }
-//     case 2:
-//     case 3:
-//     case 4:
-//     case 5:
-//     case 6:
-//     // set_color(sequence[state]);
-//     // remove_color(sequence[state - 1]);
-//     // setTimeout(function () {
-//     //     state++;
-//     // }, timing[state - 1]);
-// }
-//}
+function end_task() {
+    state = 'completed';
+    start_task_instruction.innerHTML = 'Uzdevums pabeigts! Tūlīt parādīsies nākamais uzdevums.';
+    setTimeout(function () {
+        window.location.href = './r24.html';
+    }, 3500);
+}
