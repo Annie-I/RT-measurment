@@ -95,14 +95,9 @@ h3 {
     margin: 25px auto;
 }
 
-/* aptaujai */
-form {
-    margin-bottom: 10px;
-}
-
-#geneder_form {
-    display: flex;
-    align-items: center;
+/* 2.uzd */
+#rt_number {
+    height: 250px;
 }
 
 /* rotācijas uzdevumiem */
@@ -114,3 +109,13 @@ form {
 /* .rotation_task {
 
 } */
+
+/* aptaujai */
+form {
+    margin-bottom: 10px;
+}
+
+#geneder_form {
+    display: flex;
+    align-items: center;
+}
