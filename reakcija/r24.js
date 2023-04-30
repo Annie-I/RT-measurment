@@ -17,19 +17,26 @@ const colors = [
     'lightgreen',
     'lightseagreen',
 ];
-const numbers = [3, 6, 2, 8, 5, 6, 0, 7, 1, 4, 9, 6];
-const delays_ms = [900, 450, 700, 600, 1100, 500, 1200, 850, 1000, 630, 780, 1500];
+const numbers = [3, 2, 7, 0, 5, 8, 6, 1, 4, 9, 5, 7, 8, 9, 6];
+const delays_ms = [800, 500, 700, 400, 900, 700, 600, 1000, 450, 750, 620, 1000, 1100, 550, 500];
 const font_sizes = ['185px', '140px', '215px', '170px', '120px', '200px', '90px', '130px', '155px', '105px'];
 
 let difficulty = 0;
-let index = 0;
+let number_and_delay_index = 0;
+let number_counter = 0;
+let color_index = 0;
+let font_size_index = 0;
 let state = 'start';
 let mistakes = 0;
 let missed = 0;
+let stimulus_time = 0;
+let reaction_time = 0;
+
+let reaction = [];
+let stimulus = [];
 
 document.addEventListener('keydown', function (event) {
     if (event.key === ' ') {
-        console.log(state);
         switch (state) {
             case 'start':
                 task_progress_text.innerHTML = 'Uzdevums sācies!';
@@ -37,23 +44,27 @@ document.addEventListener('keydown', function (event) {
                 show_number();
                 break;
             case 'in_progress':
-                if (numbers[index] === 6) {
+                reaction_time = new Date().getTime();
+                if (numbers[number_and_delay_index] === 6) {
+                    number_placeholder.innerHTML = '';
+                    document.getElementById('rt_2nd_task').style.backgroundImage = 'none';
+
+                    stimulus.push(stimulus_time);
+                    reaction.push(reaction_time);
+
+                    set_task_progress_text();
                     if (difficulty === 3) {
                         state = 'completed';
-                        task_progress_text.innerHTML = 'Uzdevums pabeigts! Tūlīt parādīsies nākamais uzdevums.';
                         break;
                     }
                     state = 'start';
-                    task_progress_text.innerHTML = 'Spied atstarpes taustiņu, lai turpinātu.';
                     difficulty++;
-                    index = difficulty * 2;
+                    number_and_delay_index = difficulty * 3;
+                    modify_numbers_array();
                 } else {
                     mistakes++;
-                    console.log(mistakes);
+                    console.log('mistakes', mistakes);
                 }
-                break;
-            case 'completed':
-                task_progress_text.innerHTML = 'Uzdevums pabeigts! Tūlīt parādīsies nākamais uzdevums.';
                 break;
             case 'default':
                 break;
@@ -65,17 +76,91 @@ function show_number() {
     if (state === 'start' || state === 'completed') {
         return;
     }
-    number_placeholder.innerHTML = numbers[index];
+
+    set_missed();
+
+    set_style();
+
+    set_timestamp(number_and_delay_index);
+
+    number_placeholder.innerHTML = numbers[number_and_delay_index];
+
     setTimeout(function () {
-        if (index >= numbers.length - 1) {
-            index = -1;
+        const is_last_item_in_array = number_and_delay_index >= numbers.length - 1;
+        if (is_last_item_in_array) {
+            number_and_delay_index = 0;
+        } else {
+            number_and_delay_index++;
         }
-        index++;
         show_number();
-    }, delays_ms[index]);
+    }, delays_ms[number_and_delay_index]);
 }
 
-// task_progress_text.innerHTML = 'Ļoti labi! Vēl palikušas 3 reizes. Spied atstarpes taustiņu, lai turpinātu.';
-// task_progress_text.innerHTML = 'Lieliski! Palikušas vēl 2 reizes. Spied atstarpes taustiņu, lai turpinātu.';
-// task_progress_text.innerHTML = 'Un vēl pēdējā reize. Tev lieliski izdodas! Spied atstarpes taustiņu, lai turpinātu.';
-// task_progress_text.innerHTML = 'Uzdevums pabeigts! Tūlīt parādīsies nākamais uzdevums.';
+function set_missed() {
+    if (number_placeholder.innerHTML === '6') {
+        missed++;
+        console.log('missed', missed);
+    }
+}
+
+function set_timestamp(index) {
+    if (numbers[index] === 6) {
+        stimulus_time = new Date().getTime();
+    }
+}
+
+function set_style() {
+    if (difficulty === 0) {
+        number_placeholder.style.fontSize = font_sizes[0];
+        number_placeholder.style.color = colors[color_index + 5];
+    } else if (difficulty === 1) {
+        change_color();
+    } else if (difficulty === 2) {
+        change_color();
+        change_font_size();
+    } else if (difficulty === 3) {
+        document.getElementById('rt_2nd_task').style.backgroundImage = "url('dotted_bg.png')";
+        change_color();
+        change_font_size();
+    }
+}
+
+function change_color() {
+    number_placeholder.style.color = colors[color_index];
+    if (color_index >= colors.length - 1) {
+        color_index = 0;
+    } else {
+        color_index++;
+    }
+}
+
+function change_font_size() {
+    number_placeholder.style.fontSize = font_sizes[font_size_index];
+    if (font_size_index >= font_sizes.length - 1) {
+        font_size_index = 0;
+    } else {
+        font_size_index++;
+    }
+}
+
+function modify_numbers_array() {
+    if (difficulty === 1) {
+        numbers.splice(4, 2, 4, 2);
+    }
+    if (difficulty === 2) {
+        numbers.splice(6, 1, 3);
+    }
+}
+
+function set_task_progress_text() {
+    if (difficulty === 0) {
+        task_progress_text.innerHTML = 'Ļoti labi! Vēl palikušas 3 reizes. Spied atstarpes taustiņu, lai turpinātu.';
+    } else if (difficulty === 1) {
+        task_progress_text.innerHTML = 'Izcili! Vēl 2 reizes. Spied atstarpes taustiņu, lai turpinātu.';
+    } else if (difficulty === 2) {
+        task_progress_text.innerHTML =
+            'Un vēl pēdējā reize. Tev lieliski izdodas! Spied atstarpes taustiņu, lai turpinātu.';
+    } else if (difficulty === 3) {
+        task_progress_text.innerHTML = 'Uzdevums pabeigts! Tūlīt parādīsies nākamais uzdevums.';
+    }
+}

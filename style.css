@@ -96,8 +96,16 @@ h3 {
 }
 
 /* 2.uzd */
+#rt_2nd_task {
+    display: flex;
+    /* text-align: center; */
+    justify-content: center;
+}
+
 #rt_number {
     height: 250px;
+    display: flex;
+    align-items: center;
 }
 
 /* rotācijas uzdevumiem */
