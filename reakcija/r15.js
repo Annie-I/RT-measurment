@@ -16,7 +16,6 @@ set_color(sequence[sequence_index]);
 
 document.addEventListener('keydown', function (event) {
     if (event.key === ' ') {
-        console.log(state);
         switch (state) {
             case 'start':
                 start_task_instruction.innerHTML = 'Uzdevums sācies!';
@@ -24,11 +23,11 @@ document.addEventListener('keydown', function (event) {
                 break;
             case 'in_progress':
                 mistakes++;
-                console.log(mistakes);
                 break;
             case 'relocated':
                 const reaction_time = new Date().getTime();
                 reaction.push(reaction_time);
+                start_task_instruction.innerHTML = `${sequence_index} / 5`;
 
                 if (sequence_index > sequence.length - 2) {
                     end_task();

@@ -55,6 +55,9 @@ document.addEventListener('keydown', function (event) {
                     set_task_progress_text();
                     if (difficulty === 3) {
                         state = 'completed';
+                        setTimeout(function () {
+                            window.location.href = './r38.html';
+                        }, 3500);
                         break;
                     }
                     state = 'start';
@@ -63,7 +66,6 @@ document.addEventListener('keydown', function (event) {
                     modify_numbers_array();
                 } else {
                     mistakes++;
-                    console.log('mistakes', mistakes);
                 }
                 break;
             case 'default':
@@ -99,7 +101,6 @@ function show_number() {
 function set_missed() {
     if (number_placeholder.innerHTML === '6') {
         missed++;
-        console.log('missed', missed);
     }
 }
 

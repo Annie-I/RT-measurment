@@ -90,7 +90,6 @@ h3 {
 .rt_task1_circle {
     height: 80px;
     width: 80px;
-    /* background-color: rgb(253, 85, 73); */
     border-radius: 50%;
     margin: 25px auto;
 }
@@ -98,7 +97,6 @@ h3 {
 /* 2.uzd */
 #rt_2nd_task {
     display: flex;
-    /* text-align: center; */
     justify-content: center;
 }
 
@@ -106,6 +104,18 @@ h3 {
     height: 250px;
     display: flex;
     align-items: center;
+}
+
+/* 3.uzd */
+#rt_3rd_task {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    height: 350px;
+}
+
+.rt_3rd_task_shape {
+    margin: auto;
+    visibility: hidden;
 }
 
 /* rotācijas uzdevumiem */
