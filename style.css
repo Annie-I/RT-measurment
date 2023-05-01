@@ -129,9 +129,13 @@ h3 {
 } */
 
 /* meklēšanas uzdevumi */
-#s_intro_task {
+.search_task_containers {
     text-align: center;
     margin-top: 50px;
+}
+
+.s_intro_task_img {
+    visibility: hidden;
 }
 
 /* aptaujai */
