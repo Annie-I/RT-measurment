@@ -170,11 +170,76 @@ h3 {
 }
 
 /* aptaujai */
-form {
+/* form {
     margin-bottom: 10px;
+} */
+
+#question_list {
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+#question_list p {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+#age {
+    margin-top: 5px;
+    width: 30px;
+    margin-bottom: 20px;
 }
 
 #geneder_form {
     display: flex;
-    align-items: center;
+    margin-bottom: 10px;
+}
+
+#hobbies {
+    width: 90%;
+    margin-bottom: 20px;
+}
+
+#occupation {
+    width: 90%;
+    height: 30px;
+    margin-bottom: 20px;
+}
+
+#vision_problems {
+    width: 90%;
+    height: 30px;
+}
+
+#is_playing {
+    margin-bottom: 20px;
+}
+
+input[type='radio'] {
+    margin-bottom: 5px;
+}
+
+input[type='checkbox'] {
+    margin-bottom: 5px;
+}
+
+#active_gaming_questions {
+    display: none;
+}
+
+#how_long_do_you_play {
+    width: 30px;
+    margin-bottom: 20px;
+}
+
+#is_drinking {
+    margin-bottom: 20px;
+}
+
+#is_smoking {
+    margin-bottom: 20px;
+}
+
+#if_smoking {
+    display: none;
 }
