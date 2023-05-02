@@ -119,14 +119,45 @@ h3 {
 }
 
 /* rotācijas uzdevumiem */
-.rotation_task_containers {
+.rotation_task_container {
     display: flex;
     justify-content: center;
+    margin-bottom: 30px;
 }
 
-/* .rotation_task {
-
+/* .rotation_answer_cards {
+    display: flex;
+    height: 200px;
+    background-color: rgb(250, 250, 250);
+    align-items: center;
 } */
+
+.rotation_answer_cards {
+    display: grid;
+    height: 200px;
+    background-color: rgb(250, 250, 250);
+    margin: auto;
+    border: 1px solid rgb(250, 250, 250);
+    border-radius: 15px;
+}
+
+.rotation_answer_cards p {
+    font-size: 20px;
+    text-align: center;
+    margin: 5px 0 0 0;
+}
+
+.to_hide {
+    visibility: hidden;
+}
+
+.rotation_answer_container {
+    visibility: hidden;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 25px;
+    justify-content: center;
+}
 
 /* meklēšanas uzdevumi */
 .search_task_containers {

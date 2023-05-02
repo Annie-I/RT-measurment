@@ -1,4 +1,5 @@
 const task_progress_text = document.getElementsByClassName('start_task_instruction');
+const task_container = document.getElementsByClassName('to_hide');
 const answers = document.getElementsByClassName('rotation_answer_container');
 
 let state = 'start';
@@ -28,9 +29,9 @@ document.addEventListener('keydown', function (event) {
                 task_progress_text[0].style.display = 'block';
                 task_progress_text[0].innerHTML = 'Uzdevums pabeigts! Tūlīt parādīsies nākamais uzdevums.';
                 setTimeout(function () {
-                    window.location.href = './mr1.html';
+                    window.location.href = './mr2.html';
                 }, 3500);
-                if (event.key === '2') {
+                if (event.key === '3') {
                     is_answer_correct = 1;
                 }
                 console.log(is_answer_correct);
@@ -42,6 +43,7 @@ document.addEventListener('keydown', function (event) {
 });
 
 function show_answers() {
+    task_container[0].style.visibility = 'visible';
     answers[0].style.visibility = 'visible';
     stimulus = new Date().getTime();
     console.log(stimulus);
