@@ -39,5 +39,5 @@ function end_task() {
         'Visi meklēšanas uzdevumi ir pabeigti! Tūlīt Tev parādīsies iespēja vai nu izvēlēties nākamo uzdevumu komplektu vai arī beigt uzdevumu izpildi un doties uz dalībnieku aptaujas aizpildīšanu.';
     setTimeout(function () {
         window.location.href = '../index.html';
-    }, 9000);
+    }, 9500);
 }
