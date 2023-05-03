@@ -159,8 +159,7 @@ function set_task_progress_text() {
     } else if (difficulty === 1) {
         task_progress_text.innerHTML = 'Izcili! Vēl 2 reizes. Spied atstarpes taustiņu, lai turpinātu.';
     } else if (difficulty === 2) {
-        task_progress_text.innerHTML =
-            'Un vēl pēdējā reize. Tev lieliski izdodas! Spied atstarpes taustiņu, lai turpinātu.';
+        task_progress_text.innerHTML = 'Un vēl pēdējā reize. Spied atstarpes taustiņu, lai turpinātu.';
     } else if (difficulty === 3) {
         task_progress_text.innerHTML = 'Uzdevums pabeigts! Tūlīt parādīsies nākamais uzdevums.';
     }
