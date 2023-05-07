@@ -11,13 +11,16 @@ firebase.initializeApp(firebaseConfig);
 
 const db = firebase.firestore();
 
-console.log(db);
-
 const gaming_exp = document.getElementById('active_gaming_questions');
 const smoking = document.getElementById('if_smoking');
-
+const checkbox = document.getElementById('agreement');
+const submit_button = document.getElementById('form_submit_button');
 const form = document.getElementById('user_data');
+
 form.addEventListener('submit', submit_form);
+checkbox.addEventListener('change', function () {
+    submit_button.disabled = !this.checked;
+});
 
 function show_gaming_questions() {
     gaming_exp.style.display = 'block';
@@ -37,6 +40,9 @@ function hide_smoking_question() {
 
 function submit_form(event) {
     event.preventDefault();
+    form.style.display = 'none';
+    document.getElementById('questionnaire_despription').hidden = true;
+    document.getElementById('thank_you_text').hidden = false;
     console.log(new FormData(form));
 }
 

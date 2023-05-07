@@ -181,7 +181,7 @@ h3 {
 
 #user_data {
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: 50% 50%;
 }
 
 #question_list p {
@@ -195,7 +195,7 @@ h3 {
     margin-bottom: 20px;
 }
 
-#geneder_form {
+#gender_form {
     display: flex;
     margin-bottom: 10px;
 }
@@ -235,6 +235,10 @@ input[type='checkbox'] {
 #how_long_do_you_play {
     width: 30px;
     margin-bottom: 20px;
+}
+
+#games {
+    width: 90%;
 }
 
 #is_drinking {
