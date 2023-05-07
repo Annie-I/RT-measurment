@@ -179,7 +179,7 @@ h3 {
     margin-bottom: 10px;
 } */
 
-#question_list {
+#user_data {
     display: grid;
     grid-template-columns: auto auto;
 }
