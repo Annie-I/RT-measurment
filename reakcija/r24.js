@@ -172,6 +172,7 @@ function end_task() {
             missed: missed[index],
             reaction: reaction[index],
             stimulus: stimulus[index],
+            reaction_time_ms: reaction[index] - stimulus[index],
         });
     });
 

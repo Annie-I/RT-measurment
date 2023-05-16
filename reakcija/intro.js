@@ -37,6 +37,7 @@ function finish_task() {
         JSON.stringify({
             stimulus: color_change,
             reaction: finish,
+            reaction_time_ms: finish - color_change,
             mistakes,
         })
     );

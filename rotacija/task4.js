@@ -55,6 +55,7 @@ function finish_task() {
             stimulus,
             reaction,
             is_answer_correct,
+            reaction_time_ms: reaction - stimulus,
         })
     );
 
