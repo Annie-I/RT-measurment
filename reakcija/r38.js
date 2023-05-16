@@ -6,7 +6,7 @@ const shape_sequence = [0, 6, 4, 3, 1, 7, 5, 2];
 
 let state = 'start';
 let shape_counter = 0;
-let mistakes = 0;
+let mistakes = new Array(shape_sequence.length).fill(0);
 
 let reaction = [];
 let stimulus = [];
@@ -23,7 +23,7 @@ document.addEventListener('keydown', function (event) {
                 break;
             case 'in_progress':
                 if (!stimulus_time) {
-                    mistakes++;
+                    mistakes[shape_counter]++;
                 } else {
                     hide_shape();
                     reaction.push(new Date().getTime());
@@ -60,6 +60,18 @@ function set_state() {
 }
 
 function task_ended() {
+    const results = [];
+
+    mistakes.forEach((mistake, index) => {
+        results.push({
+            mistake,
+            reaction: reaction[index],
+            stimulus: stimulus[index],
+        });
+    });
+
+    localStorage.setItem('reaction-3', JSON.stringify(results));
+
     task_progress_text.innerHTML =
         'Visi reakcijas uzdevumi ir pabeigti! Tūlīt Tev parādīsies iespēja vai nu izvēlēties nākamo uzdevumu komplektu vai arī beigt uzdevumu izpildi un doties uz dalībnieku aptaujas aizpildīšanu.';
     setTimeout(function () {

@@ -17,9 +17,7 @@ document.addEventListener('keydown', function (event) {
         } else if (state === 2 && !finish) {
             finish = new Date().getTime();
             console.log('finish', finish);
-            setTimeout(function () {
-                window.location.href = './r15.html';
-            }, 3500);
+            setTimeout(finish_task, 3500);
             start_task_instruction.innerHTML = 'Uzdevums pabeigts! Tūlīt parādīsies nākamais uzdevums.';
             // šeit var parātīt arī to, cik ātrs bija reakcijas laiks, ja tas tiks uzskatīts par vajadzīgu.
         }
@@ -31,4 +29,17 @@ function change_color() {
     state = 2;
     color_change = new Date().getTime();
     console.log('color changed', color_change);
+}
+
+function finish_task() {
+    localStorage.setItem(
+        'reaction-intro',
+        JSON.stringify({
+            stimulus: color_change,
+            reaction: finish,
+            mistakes,
+        })
+    );
+
+    window.location.href = './mr1.html';
 }

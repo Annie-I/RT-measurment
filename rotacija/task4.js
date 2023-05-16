@@ -29,9 +29,7 @@ document.addEventListener('keydown', function (event) {
                 task_progress_text[0].style.display = 'block';
                 task_progress_text[0].innerHTML =
                     'Visi rotācijas uzdevumi ir pabeigti! Tūlīt Tev parādīsies iespēja vai nu izvēlēties nākamo uzdevumu komplektu vai arī beigt uzdevumu izpildi un doties uz dalībnieku aptaujas aizpildīšanu.';
-                setTimeout(function () {
-                    window.location.href = '../index.html';
-                }, 9500);
+                setTimeout(finish_task, 9500);
                 if (event.key === '1') {
                     is_answer_correct = 1;
                 }
@@ -48,4 +46,17 @@ function show_answers() {
     answers[0].style.visibility = 'visible';
     stimulus = new Date().getTime();
     console.log(stimulus);
+}
+
+function finish_task() {
+    localStorage.setItem(
+        'rotation-4',
+        JSON.stringify({
+            stimulus,
+            reaction,
+            is_answer_correct,
+        })
+    );
+
+    window.location.href = './mr1.html';
 }

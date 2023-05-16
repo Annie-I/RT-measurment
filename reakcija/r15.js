@@ -10,7 +10,7 @@ let stimulus = [];
 
 let state = 'start';
 let sequence_index = 0;
-let mistakes = 0;
+let mistakes = [0, 0, 0, 0, 0];
 
 set_color(sequence[sequence_index]);
 
@@ -22,7 +22,7 @@ document.addEventListener('keydown', function (event) {
                 start_task();
                 break;
             case 'in_progress':
-                mistakes++;
+                mistakes[sequence_index]++;
                 break;
             case 'relocated':
                 const reaction_time = new Date().getTime();
@@ -73,6 +73,19 @@ function remove_color(number) {
 function end_task() {
     state = 'completed';
     start_task_instruction.innerHTML = 'Uzdevums pabeigts! Tūlīt parādīsies nākamais uzdevums.';
+
+    const results = [];
+
+    mistakes.forEach((mistake, index) => {
+        results.push({
+            mistake,
+            reaction: reaction[index],
+            stimulus: stimulus[index],
+        });
+    });
+
+    localStorage.setItem('reaction-1', JSON.stringify(results));
+
     setTimeout(function () {
         window.location.href = './r24.html';
     }, 3500);

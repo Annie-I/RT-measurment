@@ -28,9 +28,7 @@ document.addEventListener('keydown', function (event) {
                 state = 'completed';
                 task_progress_text[0].style.display = 'block';
                 task_progress_text[0].innerHTML = 'Uzdevums pabeigts! Tūlīt parādīsies nākamais uzdevums.';
-                setTimeout(function () {
-                    window.location.href = './mr3.html';
-                }, 3500);
+                setTimeout(finish_task, 3500);
                 if (event.key === '3') {
                     is_answer_correct = 1;
                 }
@@ -47,4 +45,17 @@ function show_answers() {
     answers[0].style.visibility = 'visible';
     stimulus = new Date().getTime();
     console.log(stimulus);
+}
+
+function finish_task() {
+    localStorage.setItem(
+        'rotation-2',
+        JSON.stringify({
+            stimulus,
+            reaction,
+            is_answer_correct,
+        })
+    );
+
+    window.location.href = './mr1.html';
 }

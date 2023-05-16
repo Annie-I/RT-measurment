@@ -27,8 +27,8 @@ let number_counter = 0;
 let color_index = 0;
 let font_size_index = 0;
 let state = 'start';
-let mistakes = 0;
-let missed = 0;
+let mistakes = [0, 0, 0, 0];
+let missed = [0, 0, 0, 0];
 let stimulus_time = 0;
 let reaction_time = 0;
 
@@ -55,9 +55,7 @@ document.addEventListener('keydown', function (event) {
                     set_task_progress_text();
                     if (difficulty === 3) {
                         state = 'completed';
-                        setTimeout(function () {
-                            window.location.href = './r38.html';
-                        }, 3500);
+                        setTimeout(end_task, 3500);
                         break;
                     }
                     state = 'start';
@@ -65,7 +63,7 @@ document.addEventListener('keydown', function (event) {
                     number_and_delay_index = difficulty * 3;
                     modify_numbers_array();
                 } else {
-                    mistakes++;
+                    mistakes[difficulty]++;
                 }
                 break;
             case 'default':
@@ -100,7 +98,7 @@ function show_number() {
 
 function set_missed() {
     if (number_placeholder.innerHTML === '6') {
-        missed++;
+        missed[difficulty]++;
     }
 }
 
@@ -163,4 +161,23 @@ function set_task_progress_text() {
     } else if (difficulty === 3) {
         task_progress_text.innerHTML = 'Uzdevums pabeigts! Tūlīt parādīsies nākamais uzdevums.';
     }
+}
+
+function end_task() {
+    const results = [];
+
+    mistakes.forEach((mistake, index) => {
+        results.push({
+            mistake,
+            missed: missed[index],
+            reaction: reaction[index],
+            stimulus: stimulus[index],
+        });
+    });
+
+    localStorage.setItem('reaction-2', JSON.stringify(results));
+
+    setTimeout(function () {
+        window.location.href = './r38.html';
+    }, 3500);
 }
