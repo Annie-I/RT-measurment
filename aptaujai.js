@@ -78,25 +78,25 @@ function send_reaction_results(user_id) {
     }
 
     db.collection('reaction_results').add({
-        user_id,
+        user_id: db.doc('users/' + user_id),
         task: 'intro',
         result: reaction_intro,
     });
 
     db.collection('reaction_results').add({
-        user_id,
+        user_id: db.doc('users/' + user_id),
         task: 'first',
         result: reaction_one,
     });
 
     db.collection('reaction_results').add({
-        user_id,
+        user_id: db.doc('users/' + user_id),
         task: 'second',
         result: reaction_two,
     });
 
     db.collection('reaction_results').add({
-        user_id,
+        user_id: db.doc('users/' + user_id),
         task: 'third',
         result: reaction_three,
     });
@@ -114,33 +114,33 @@ function send_rotation_results(user_id) {
     }
 
     db.collection('rotation_results').add({
-        user_id,
+        user_id: db.doc('users/' + user_id),
         task: 'intro',
-        result: rotation_intro,
+        result: JSON.parse(rotation_intro),
     });
 
     db.collection('rotation_results').add({
-        user_id,
+        user_id: db.doc('users/' + user_id),
         task: 'first',
-        result: rotation_one,
+        result: JSON.parse(rotation_one),
     });
 
     db.collection('rotation_results').add({
-        user_id,
+        user_id: db.doc('users/' + user_id),
         task: 'second',
-        result: rotation_two,
+        result: JSON.parse(rotation_two),
     });
 
     db.collection('rotation_results').add({
-        user_id,
+        user_id: db.doc('users/' + user_id),
         task: 'third',
-        result: rotation_three,
+        result: JSON.parse(rotation_three),
     });
 
     db.collection('rotation_results').add({
-        user_id,
+        user_id: db.doc('users/' + user_id),
         task: 'fourth',
-        result: rotation_fourth,
+        result: JSON.parse(rotation_fourth),
     });
 }
 
@@ -157,38 +157,38 @@ function send_search_results(user_id) {
     }
 
     db.collection('search_results').add({
-        user_id,
+        user_id: db.doc('users/' + user_id),
         task: 'intro',
-        result: search_intro,
+        result: JSON.parse(search_intro),
     });
 
     db.collection('search_results').add({
-        user_id,
+        user_id: db.doc('users/' + user_id),
         task: 'first',
-        result: search_one,
+        result: JSON.parse(search_one),
     });
 
     db.collection('search_results').add({
-        user_id,
+        user_id: db.doc('users/' + user_id),
         task: 'second',
-        result: search_two,
+        result: JSON.parse(search_two),
     });
 
     db.collection('search_results').add({
-        user_id,
+        user_id: db.doc('users/' + user_id),
         task: 'third',
-        result: search_three,
+        result: JSON.parse(search_three),
     });
 
     db.collection('search_results').add({
-        user_id,
+        user_id: db.doc('users/' + user_id),
         task: 'fourth',
-        result: search_fourth,
+        result: JSON.parse(search_fourth),
     });
 
     db.collection('search_results').add({
-        user_id,
+        user_id: db.doc('users/' + user_id),
         task: 'fifth',
-        result: search_fifth,
+        result: JSON.parse(search_fifth),
     });
 }
