@@ -40,9 +40,9 @@ function hide_smoking_question() {
 
 function submit_form(event) {
     event.preventDefault();
-    // form.style.display = 'none';
-    // document.getElementById('questionnaire_despription').hidden = true;
-    // document.getElementById('thank_you_text').hidden = false;
+    form.style.display = 'none';
+    document.getElementById('questionnaire_despription').hidden = true;
+    document.getElementById('thank_you_text').hidden = false;
     send_data(new FormData(form));
 }
 
@@ -80,25 +80,25 @@ function send_reaction_results(user_id) {
     db.collection('reaction_results').add({
         user_id: db.doc('users/' + user_id),
         task: 'intro',
-        result: reaction_intro,
+        result: JSON.parse(reaction_intro),
     });
 
     db.collection('reaction_results').add({
         user_id: db.doc('users/' + user_id),
         task: 'first',
-        result: reaction_one,
+        result: JSON.parse(reaction_one),
     });
 
     db.collection('reaction_results').add({
         user_id: db.doc('users/' + user_id),
         task: 'second',
-        result: reaction_two,
+        result: JSON.parse(reaction_two),
     });
 
     db.collection('reaction_results').add({
         user_id: db.doc('users/' + user_id),
         task: 'third',
-        result: reaction_three,
+        result: JSON.parse(reaction_three),
     });
 }
 
