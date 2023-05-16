@@ -56,11 +56,139 @@ function send_data(formData) {
     db.collection('users')
         .add(formDataObj)
         .then((docRef) => {
-            console.log('success');
-            console.log(docRef);
             user_id = docRef.id;
+
+            send_reaction_results(user_id);
+            send_rotation_results(user_id);
+            send_search_results(user_id);
         })
         .catch((error) => {
             console.error('Error adding document: ', error);
         });
+}
+
+function send_reaction_results(user_id) {
+    const reaction_intro = localStorage.getItem('reaction-intro');
+    const reaction_one = localStorage.getItem('reaction-1');
+    const reaction_two = localStorage.getItem('reaction-2');
+    const reaction_three = localStorage.getItem('reaction-3');
+
+    if (!reaction_intro || !reaction_one || !reaction_two || !reaction_three) {
+        return;
+    }
+
+    db.collection('reaction_results').add({
+        user_id,
+        task: 'intro',
+        result: reaction_intro,
+    });
+
+    db.collection('reaction_results').add({
+        user_id,
+        task: 'first',
+        result: reaction_one,
+    });
+
+    db.collection('reaction_results').add({
+        user_id,
+        task: 'second',
+        result: reaction_two,
+    });
+
+    db.collection('reaction_results').add({
+        user_id,
+        task: 'third',
+        result: reaction_three,
+    });
+}
+
+function send_rotation_results(user_id) {
+    const rotation_intro = localStorage.getItem('rotation-intro');
+    const rotation_one = localStorage.getItem('rotation-1');
+    const rotation_two = localStorage.getItem('rotation-2');
+    const rotation_three = localStorage.getItem('rotation-3');
+    const rotation_fourth = localStorage.getItem('rotation-4');
+
+    if (!rotation_intro || !rotation_one || !rotation_two || !rotation_three || rotation_fourth) {
+        return;
+    }
+
+    db.collection('rotation_results').add({
+        user_id,
+        task: 'intro',
+        result: rotation_intro,
+    });
+
+    db.collection('rotation_results').add({
+        user_id,
+        task: 'first',
+        result: rotation_one,
+    });
+
+    db.collection('rotation_results').add({
+        user_id,
+        task: 'second',
+        result: rotation_two,
+    });
+
+    db.collection('rotation_results').add({
+        user_id,
+        task: 'third',
+        result: rotation_three,
+    });
+
+    db.collection('rotation_results').add({
+        user_id,
+        task: 'fourth',
+        result: rotation_fourth,
+    });
+}
+
+function send_search_results(user_id) {
+    const search_intro = localStorage.getItem('search-intro');
+    const search_one = localStorage.getItem('search-1');
+    const search_two = localStorage.getItem('search-2');
+    const search_three = localStorage.getItem('search-3');
+    const search_fourth = localStorage.getItem('search-4');
+    const search_fifth = localStorage.getItem('search-5');
+
+    if (!search_intro || !search_one || !search_two || !search_three || search_fourth || search_fifth) {
+        return;
+    }
+
+    db.collection('search_results').add({
+        user_id,
+        task: 'intro',
+        result: search_intro,
+    });
+
+    db.collection('search_results').add({
+        user_id,
+        task: 'first',
+        result: search_one,
+    });
+
+    db.collection('search_results').add({
+        user_id,
+        task: 'second',
+        result: search_two,
+    });
+
+    db.collection('search_results').add({
+        user_id,
+        task: 'third',
+        result: search_three,
+    });
+
+    db.collection('search_results').add({
+        user_id,
+        task: 'fourth',
+        result: search_fourth,
+    });
+
+    db.collection('search_results').add({
+        user_id,
+        task: 'fifth',
+        result: search_fifth,
+    });
 }
