@@ -109,7 +109,7 @@ function send_rotation_results(user_id) {
     const rotation_three = localStorage.getItem('rotation-3');
     const rotation_fourth = localStorage.getItem('rotation-4');
 
-    if (!rotation_intro || !rotation_one || !rotation_two || !rotation_three || rotation_fourth) {
+    if (!rotation_intro || !rotation_one || !rotation_two || !rotation_three || !rotation_fourth) {
         return;
     }
 
@@ -152,7 +152,7 @@ function send_search_results(user_id) {
     const search_fourth = localStorage.getItem('search-4');
     const search_fifth = localStorage.getItem('search-5');
 
-    if (!search_intro || !search_one || !search_two || !search_three || search_fourth || search_fifth) {
+    if (!search_intro || !search_one || !search_two || !search_three || !search_fourth || !search_fifth) {
         return;
     }
 
