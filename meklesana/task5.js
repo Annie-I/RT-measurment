@@ -34,6 +34,15 @@ function hide_image() {
 }
 
 function end_task() {
+    localStorage.setItem(
+        'search-5',
+        JSON.stringify({
+            stimulus,
+            reaction,
+            reaction_time_ms: reaction - stimulus,
+        })
+    );
+
     state = 'completed';
     task_progress_text[0].innerHTML =
         'Visi meklēšanas uzdevumi ir pabeigti! Tūlīt Tev parādīsies iespēja vai nu izvēlēties nākamo uzdevumu komplektu vai arī beigt uzdevumu izpildi un doties uz dalībnieku aptaujas aizpildīšanu.';

@@ -34,6 +34,15 @@ function hide_image() {
 }
 
 function end_task() {
+    localStorage.setItem(
+        'search-3',
+        JSON.stringify({
+            stimulus,
+            reaction,
+            reaction_time_ms: reaction - stimulus,
+        })
+    );
+
     state = 'completed';
     task_progress_text[0].innerHTML = 'Uzdevums pabeigts! Tūlīt parādīsies nākamais uzdevums.';
     setTimeout(function () {
