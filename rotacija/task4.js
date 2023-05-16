@@ -58,5 +58,5 @@ function finish_task() {
         })
     );
 
-    window.location.href = './mr1.html';
+    window.location.href = '../index.html';
 }

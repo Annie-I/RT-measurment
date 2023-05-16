@@ -41,5 +41,5 @@ function finish_task() {
         })
     );
 
-    window.location.href = './mr1.html';
+    window.location.href = './r15.html';
 }
