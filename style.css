@@ -253,7 +253,10 @@ input[type='checkbox'] {
     display: none;
 }
 
+.flex {
+    display: flex;
+}
+
 #go_to_survey {
-    width: auto;
-    display: block;
+    flex-grow: 1;
 }
