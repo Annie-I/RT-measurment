@@ -40,35 +40,25 @@ function hide_smoking_question() {
 
 function submit_form(event) {
     event.preventDefault();
-    form.style.display = 'none';
-    document.getElementById('questionnaire_despription').hidden = true;
-    document.getElementById('thank_you_text').hidden = false;
-    console.log(new FormData(form));
+    // form.style.display = 'none';
+    // document.getElementById('questionnaire_despription').hidden = true;
+    // document.getElementById('thank_you_text').hidden = false;
+    send_data(new FormData(form));
 }
 
-function send_data() {
+function send_data(formData) {
+    const formDataObj = {};
+    formData.forEach((value, key) => (formDataObj[key] = value));
+
+    formDataObj.window = { width: window.innerWidth, height: window.innerHeight };
+
     let user_id;
     db.collection('users')
-        .add({
-            name: 'John',
-            country: 'Japan',
-        })
+        .add(formDataObj)
         .then((docRef) => {
+            console.log('success');
+            console.log(docRef);
             user_id = docRef.id;
-        })
-        .catch((error) => {
-            console.error('Error adding document: ', error);
-        });
-
-    db.collection('reaction_results')
-        .add([
-            {
-                name: 'John',
-                country: 'Japan',
-            },
-        ])
-        .then((docRef) => {
-            console.log('Document written with ID: ', docRef.id);
         })
         .catch((error) => {
             console.error('Error adding document: ', error);
