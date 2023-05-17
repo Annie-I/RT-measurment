@@ -13,10 +13,8 @@ document.addEventListener('keydown', function (event) {
             start_task_instruction.innerHTML = 'Uzdevums sācies!';
         } else if (state === 1) {
             mistakes++;
-            console.log('Mistakes', mistakes);
         } else if (state === 2 && !finish) {
             finish = new Date().getTime();
-            console.log('finish', finish);
             setTimeout(finish_task, 3500);
             start_task_instruction.innerHTML = 'Uzdevums pabeigts! Tūlīt parādīsies nākamais uzdevums.';
             // šeit var parātīt arī to, cik ātrs bija reakcijas laiks, ja tas tiks uzskatīts par vajadzīgu.
@@ -28,7 +26,6 @@ function change_color() {
     circle.style.backgroundColor = 'rgb(14, 119, 96)';
     state = 2;
     color_change = new Date().getTime();
-    console.log('color changed', color_change);
 }
 
 function finish_task() {
