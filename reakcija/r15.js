@@ -28,7 +28,7 @@ document.addEventListener('keydown', function (event) {
                 const reaction_time = new Date().getTime();
                 reaction.push(reaction_time);
                 start_task_instruction.innerHTML = `${sequence_index} / 5`;
-                circles[sequence[sequence_index]].style.backgroundColor = 'gray';
+                circles[sequence[sequence_index]].style.backgroundColor = 'DarkSlateGray';
 
                 if (sequence_index > sequence.length - 2) {
                     end_task();
