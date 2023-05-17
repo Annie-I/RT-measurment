@@ -22,7 +22,11 @@ if (search_finished) {
 }
 
 reset_button.addEventListener('click', function () {
-    if (window.confirm('Vai tiešām dzēst visus līdzšinējos rezultātus?')) {
+    if (
+        window.confirm(
+            'Vai tiešām vēlies nodzēst visus izpildīto uzdevumu rezultātus un sākt uzdevumu izpildi no jauna? Nodzēstos rezultātus nebūs iespējams atgūt.'
+        )
+    ) {
         localStorage.clear();
         window.location.reload();
     }
