@@ -56,13 +56,15 @@ h3 {
     background-color: rgb(206, 220, 250);
     border: none;
     border-radius: 10px;
-    width: 140px;
-    height: 25px;
+    min-width: 140px;
+    min-height: 25px;
     padding: 5px 20px;
     margin-left: auto;
     text-align: center;
     text-decoration: none;
     color: rgb(0, 23, 73);
+    font-size: 17px;
+    cursor: pointer;
 }
 
 /* testiem */
@@ -258,6 +260,21 @@ input[type='checkbox'] {
 }
 
 #go_to_survey,
+#reset_tasks,
 #form_submit_button {
     flex-grow: 1;
+}
+
+#go_to_survey {
+    margin-bottom: 10px;
+}
+
+#reset_tasks {
+    background-color: rgb(172, 4, 4);
+    color: white;
+}
+
+#form_submit_button {
+    padding-top: 10px;
+    padding-bottom: 10px;
 }

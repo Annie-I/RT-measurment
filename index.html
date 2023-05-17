@@ -36,25 +36,19 @@
                 izpildīšana nav obligāta, bet ir vēlama.
 
                 <div id="task_selection">
-                    <div class="task_card">
-                        <!-- bilde -->
-                        <!-- <img src="./placeholder.jpg" alt="placeholder image" class="task_image" /> -->
+                    <div id="card-one" class="task_card">
                         <h3>Reakcija</h3>
                         <p class="task_desription">Cik ātri Tu vari reaģēt uz izmaiņām?</p>
                         <p class="task_count">Uzdevumu skaits: 3</p>
                         <a href="reakcija/iesildisanas.html" class="button">Uz uzdevumu &rarr;</a>
                     </div>
-                    <div class="task_card">
-                        <!-- bilde -->
-                        <!-- <img src="./placeholder.jpg" alt="placeholder image" class="task_image" /> -->
+                    <div id="card-two" class="task_card">
                         <h3>Mentālā rotācija</h3>
                         <p class="task_desription">Kāda ir Tava spēja atpazīt objektus, kad tie tiek pagriezti?</p>
                         <p class="task_count">Uzdevumu skaits: 4</p>
                         <a href="rotacija/iesildisanas.html" class="button">Uz uzdevumu &rarr;</a>
                     </div>
-                    <div class="task_card">
-                        <!-- bilde -->
-                        <!-- <img src="./placeholder.jpg" alt="placeholder image" class="task_image" /> -->
+                    <div id="card-three" class="task_card">
                         <h3>Meklēšana</h3>
                         <p class="task_desription">Cik ātri Tu vari atrast prasīto objektu starp citiem?</p>
                         <p class="task_count">Uzdevumu skaits: 5</p>
@@ -62,8 +56,14 @@
                     </div>
                 </div>
             </div>
-            <div class="flex">
-                <a href="./aptauja.html" class="button" id="go_to_survey" hidden>Pildīt aptauju</a>
+            <div id="button_group" hidden>
+                <div class="flex">
+                    <a href="./aptauja.html" class="button" id="go_to_survey">Pildīt aptauju</a>
+                </div>
+                <div class="flex">
+                    <button id="reset_tasks" class="button">Sākt visus uzdevumus no jauna</button>
+                </div>
+                <p>Nospiežot šo pogu, visu uzdevumu rezultāti tiks dzēsti un nāksies tos pildīt atkārtoti.</p>
             </div>
         </div>
         <script src="./index.js"></script>
