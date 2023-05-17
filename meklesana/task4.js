@@ -14,8 +14,8 @@ document.addEventListener('keydown', function (event) {
                 show_image();
                 break;
             case 'in_progress':
-                end_task();
                 hide_image();
+                end_task();
                 break;
             case 'default':
                 break;

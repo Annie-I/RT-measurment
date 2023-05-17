@@ -28,6 +28,7 @@ document.addEventListener('keydown', function (event) {
                 const reaction_time = new Date().getTime();
                 reaction.push(reaction_time);
                 start_task_instruction.innerHTML = `${sequence_index} / 5`;
+                circles[sequence[sequence_index]].style.backgroundColor = 'gray';
 
                 if (sequence_index > sequence.length - 2) {
                     end_task();
@@ -78,7 +79,7 @@ function end_task() {
 
     mistakes.forEach((mistake, index) => {
         results.push({
-            mistake,
+            mistakes: mistake,
             reaction: reaction[index],
             stimulus: stimulus[index],
             reaction_time_ms: reaction[index] - stimulus[index],

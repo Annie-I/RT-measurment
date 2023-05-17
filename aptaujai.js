@@ -83,7 +83,7 @@ function send_data(formData) {
             finish_survey();
         })
         .catch((error) => {
-            console.error('Error adding document: ', error);
+            // console.error('Error adding document: ', error);
         });
 }
 
@@ -97,28 +97,125 @@ function send_reaction_results(user_id) {
         return;
     }
 
+    let data = JSON.parse(reaction_intro);
+
     db.collection('reaction_results').add({
         user_id,
         task: 'intro',
-        result: JSON.parse(reaction_intro),
+        mistakes: data.mistakes,
+        reaction: data.reaction,
+        stimulus: data.stimulus,
+        reacton_time_ms: data.reaction_time_ms,
     });
+
+    data = JSON.parse(reaction_one);
 
     db.collection('reaction_results').add({
         user_id,
         task: 'first',
-        result: JSON.parse(reaction_one),
+        // first result
+        mistakes_1: data[0].mistakes,
+        stimulus_1: data[0].stimulus,
+        reaction_1: data[0].reaction,
+        reacton_time_ms_1: data[0].reaction_time_ms,
+        // second result
+        mistakes_2: data[1].mistakes,
+        stimulus_2: data[1].stimulus,
+        reaction_2: data[1].reaction,
+        reacton_time_ms_2: data[1].reaction_time_ms,
+        // third result
+        mistakes_3: data[2].mistakes,
+        stimulus_3: data[2].stimulus,
+        reaction_3: data[2].reaction,
+        reacton_time_ms_3: data[2].reaction_time_ms,
+        // fourth result
+        mistakes_4: data[3].mistakes,
+        stimulus_4: data[3].stimulus,
+        reaction_4: data[3].reaction,
+        reacton_time_ms_4: data[3].reaction_time_ms,
+        // fifth result
+        mistakes_5: data[4].mistakes,
+        stimulus_5: data[4].stimulus,
+        reaction_5: data[4].reaction,
+        reacton_time_ms_5: data[4].reaction_time_ms,
     });
+
+    data = JSON.parse(reaction_two);
 
     db.collection('reaction_results').add({
         user_id,
         task: 'second',
-        result: JSON.parse(reaction_two),
+        // first result
+        mistakes_1: data[0].mistakes,
+        missed_1: data[0].missed,
+        stimulus_1: data[0].stimulus,
+        reaction_1: data[0].reaction,
+        reacton_time_ms_1: data[0].reaction_time_ms,
+        // second result
+        mistakes_2: data[1].mistakes,
+        missed_2: data[1].missed,
+        stimulus_2: data[1].stimulus,
+        reaction_2: data[1].reaction,
+        reacton_time_ms_2: data[1].reaction_time_ms,
+        // third result
+        mistakes_3: data[2].mistakes,
+        missed_3: data[2].missed,
+        stimulus_3: data[2].stimulus,
+        reaction_3: data[2].reaction,
+        reacton_time_ms_3: data[2].reaction_time_ms,
+        // fourth result
+        mistakes_4: data[3].mistakes,
+        missed_4: data[3].missed,
+        stimulus_4: data[3].stimulus,
+        reaction_4: data[3].reaction,
+        reacton_time_ms_4: data[3].reaction_time_ms,
     });
+
+    data = JSON.parse(reaction_three);
 
     db.collection('reaction_results').add({
         user_id,
         task: 'third',
-        result: JSON.parse(reaction_three),
+        // first result
+        mistakes_1: data[0].mistakes,
+        stimulus_1: data[0].stimulus,
+        reaction_1: data[0].reaction,
+        reacton_time_ms_1: data[0].reaction_time_ms,
+        // second result
+        mistakes_2: data[1].mistakes,
+        stimulus_2: data[1].stimulus,
+        reaction_2: data[1].reaction,
+        reacton_time_ms_2: data[1].reaction_time_ms,
+        // third result
+        mistakes_3: data[2].mistakes,
+        stimulus_3: data[2].stimulus,
+        reaction_3: data[2].reaction,
+        reacton_time_ms_3: data[2].reaction_time_ms,
+        // fourth result
+        mistakes_4: data[3].mistakes,
+        stimulus_4: data[3].stimulus,
+        reaction_4: data[3].reaction,
+        reacton_time_ms_4: data[3].reaction_time_ms,
+        // fifth result
+        mistakes_5: data[4].mistakes,
+        stimulus_5: data[4].stimulus,
+        reaction_5: data[4].reaction,
+        reacton_time_ms_5: data[4].reaction_time_ms,
+        // sixth result
+        mistakes_6: data[5].mistakes,
+        stimulus_6: data[5].stimulus,
+        reaction_6: data[5].reaction,
+        reacton_time_ms_6: data[5].reaction_time_ms,
+        // seventh result
+        mistakes_7: data[6].mistakes,
+        stimulus_7: data[6].stimulus,
+        reaction_7: data[6].reaction,
+        reacton_time_ms_7: data[6].reaction_time_ms,
+        // eighth result
+        mistakes_8: data[7].mistakes,
+        stimulus_8: data[7].stimulus,
+        reaction_8: data[7].reaction,
+        reacton_time_ms_8: data[7].reaction_time_ms,
     });
 }
 
@@ -133,34 +230,60 @@ function send_rotation_results(user_id) {
         return;
     }
 
+    let data = JSON.parse(rotation_intro);
+
     db.collection('rotation_results').add({
         user_id,
         task: 'intro',
-        result: JSON.parse(rotation_intro),
+
+        mistakes: data.is_answer_correct ? 0 : 1,
+        stimulus: data.stimulus,
+        reaction: data.reaction,
+        reacton_time_ms: data.reaction_time_ms,
     });
+
+    data = JSON.parse(rotation_one);
 
     db.collection('rotation_results').add({
         user_id,
         task: 'first',
-        result: JSON.parse(rotation_one),
+        mistakes: data.is_answer_correct ? 0 : 1,
+        stimulus: data.stimulus,
+        reaction: data.reaction,
+        reacton_time_ms: data.reaction_time_ms,
     });
+
+    data = JSON.parse(rotation_two);
 
     db.collection('rotation_results').add({
         user_id,
         task: 'second',
-        result: JSON.parse(rotation_two),
+        mistakes: data.is_answer_correct ? 0 : 1,
+        stimulus: data.stimulus,
+        reaction: data.reaction,
+        reacton_time_ms: data.reaction_time_ms,
     });
+
+    data = JSON.parse(rotation_three);
 
     db.collection('rotation_results').add({
         user_id,
         task: 'third',
-        result: JSON.parse(rotation_three),
+        mistakes: data.is_answer_correct ? 0 : 1,
+        stimulus: data.stimulus,
+        reaction: data.reaction,
+        reacton_time_ms: data.reaction_time_ms,
     });
+
+    data = JSON.parse(rotation_fourth);
 
     db.collection('rotation_results').add({
         user_id,
         task: 'fourth',
-        result: JSON.parse(rotation_fourth),
+        mistakes: data.is_answer_correct ? 0 : 1,
+        stimulus: data.stimulus,
+        reaction: data.reaction,
+        reacton_time_ms: data.reaction_time_ms,
     });
 }
 
@@ -176,39 +299,63 @@ function send_search_results(user_id) {
         return;
     }
 
+    let data = JSON.parse(search_intro);
+
     db.collection('search_results').add({
         user_id,
         task: 'intro',
-        result: JSON.parse(search_intro),
+        stimulus: data.stimulus,
+        reaction: data.reaction,
+        reacton_time_ms: data.reaction_time_ms,
     });
+
+    data = JSON.parse(search_one);
 
     db.collection('search_results').add({
         user_id,
         task: 'first',
-        result: JSON.parse(search_one),
+        stimulus: data.stimulus,
+        reaction: data.reaction,
+        reacton_time_ms: data.reaction_time_ms,
     });
+
+    data = JSON.parse(search_two);
 
     db.collection('search_results').add({
         user_id,
         task: 'second',
-        result: JSON.parse(search_two),
+        stimulus: data.stimulus,
+        reaction: data.reaction,
+        reacton_time_ms: data.reaction_time_ms,
     });
+
+    data = JSON.parse(search_three);
 
     db.collection('search_results').add({
         user_id,
         task: 'third',
-        result: JSON.parse(search_three),
+        stimulus: data.stimulus,
+        reaction: data.reaction,
+        reacton_time_ms: data.reaction_time_ms,
     });
+
+    data = JSON.parse(search_fourth);
 
     db.collection('search_results').add({
         user_id,
         task: 'fourth',
-        result: JSON.parse(search_fourth),
+        stimulus: data.stimulus,
+        reaction: data.reaction,
+        reacton_time_ms: data.reaction_time_ms,
     });
+
+    data = JSON.parse(search_fifth);
 
     db.collection('search_results').add({
         user_id,
         task: 'fifth',
-        result: JSON.parse(search_fifth),
+        stimulus: data.stimulus,
+        reaction: data.reaction,
+        reacton_time_ms: data.reaction_time_ms,
     });
 }

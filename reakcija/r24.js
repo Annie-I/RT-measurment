@@ -168,7 +168,7 @@ function end_task() {
 
     mistakes.forEach((mistake, index) => {
         results.push({
-            mistake,
+            mistakes: mistake,
             missed: missed[index],
             reaction: reaction[index],
             stimulus: stimulus[index],
