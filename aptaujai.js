@@ -47,6 +47,7 @@ function finish_survey() {
     form.style.display = 'none';
     document.getElementById('questionnaire_despription').hidden = true;
     document.getElementById('thank_you_text').hidden = false;
+    document.getElementById('thank_you_button').style.display = 'block';
 }
 
 function send_data(formData) {
