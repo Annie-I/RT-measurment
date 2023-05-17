@@ -8,7 +8,6 @@ let reaction = 0;
 let is_answer_correct = 0;
 
 document.addEventListener('keydown', function (event) {
-    console.log(state);
     if (event.key === ' ') {
         switch (state) {
             case 'start':
@@ -24,7 +23,6 @@ document.addEventListener('keydown', function (event) {
         switch (state) {
             case 'in_progress':
                 reaction = new Date().getTime();
-                console.log(reaction);
                 state = 'completed';
                 task_progress_text[0].style.display = 'block';
                 task_progress_text[0].innerHTML =
@@ -33,7 +31,6 @@ document.addEventListener('keydown', function (event) {
                 if (event.key === '1') {
                     is_answer_correct = 1;
                 }
-                console.log(is_answer_correct);
                 break;
             case 'default':
                 break;
@@ -45,7 +42,6 @@ function show_answers() {
     task_container[0].style.visibility = 'visible';
     answers[0].style.visibility = 'visible';
     stimulus = new Date().getTime();
-    console.log(stimulus);
 }
 
 function finish_task() {
