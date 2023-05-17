@@ -10,15 +10,15 @@ if (reaction_finished || search_finished || rotation_finished) {
 }
 
 if (reaction_finished) {
-    document.getElementById('card-one').hidden = true;
+    document.getElementById('card-one').style.display = 'none';
 }
 
 if (rotation_finished) {
-    document.getElementById('card-two').hidden = true;
+    document.getElementById('card-two').style.display = 'none';
 }
 
 if (search_finished) {
-    document.getElementById('card-three').hidden = true;
+    document.getElementById('card-three').style.display = 'none';
 }
 
 reset_button.addEventListener('click', function () {
