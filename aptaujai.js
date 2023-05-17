@@ -40,15 +40,32 @@ function hide_smoking_question() {
 
 function submit_form(event) {
     event.preventDefault();
+    send_data(new FormData(form));
+}
+
+function finish_survey() {
     form.style.display = 'none';
     document.getElementById('questionnaire_despription').hidden = true;
     document.getElementById('thank_you_text').hidden = false;
-    send_data(new FormData(form));
 }
 
 function send_data(formData) {
     const formDataObj = {};
     formData.forEach((value, key) => (formDataObj[key] = value));
+
+    if (
+        !formDataObj.age ||
+        !formDataObj.occupation ||
+        !formDataObj.hobbies ||
+        !formDataObj.vision_impairments ||
+        !formDataObj.videogames ||
+        !formDataObj.alcohol ||
+        !formDataObj.smoking
+    ) {
+        alert('Lūdzu, aizpildi visus aptaujas laukus!');
+
+        return;
+    }
 
     formDataObj.window = { width: window.innerWidth, height: window.innerHeight };
 
@@ -61,6 +78,8 @@ function send_data(formData) {
             send_reaction_results(user_id);
             send_rotation_results(user_id);
             send_search_results(user_id);
+            localStorage.clear();
+            finish_survey();
         })
         .catch((error) => {
             console.error('Error adding document: ', error);
